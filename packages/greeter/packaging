@@ -1,0 +1,12 @@
+# abort script on any command that exits with a non zero value
+set -e
+
+cp -r greeter/* ${BOSH_INSTALL_TARGET}
+
+cd ${BOSH_INSTALL_TARGET}
+
+find .
+
+mkdir -p ${BOSH_INSTALL_TARGET}/gem_home
+
+/var/vcap/packages/ruby/bin/bundle install --local --no-prune --path ${BOSH_INSTALL_TARGET}/gem_home
